@@ -18,7 +18,7 @@ while True:
         def evaluate(self, board, my_symbol, opponent_symbol):
           return random.randint(1,500)
     
-      my_random_agent = MyRandomAgent()
+      my_random_agent = MyRandomAgent(alpha=0.1, epsilon=1.0)
       start(player_o=my_random_agent)
   
       print("Wilt u opnieuw beginnen?")
@@ -43,17 +43,17 @@ while True:
             reward = 0
           return reward
          
-      my_agent = MyAgent()
+      my_agent = MyAgent(alpha=0.9, epsilon=0.3)
       my_agent = load("MyAgent_3000")
        
-      my_agent.learning = False
+      my_agent.learning = True
       start(player_o=my_agent)
   
       print("Wilt u opnieuw beginnen?")
       x=input()
       if x=="ja" or x=="Ja" or x=="JA":
-        continue 
         print("\n")
+        continue 
       if x=="nee" or x=="Nee" or x=="NEE":
         break
         print("Tot ziens!")
@@ -66,14 +66,14 @@ while True:
     print("Wilt u opnieuw beginnen?")
     x=input()
     if x=="ja" or x=="Ja" or x=="JA":
-      continue 
       print("\n")
+      continue 
     if x=="nee" or x=="Nee" or x=="NEE":
       break
       print("Tot ziens!")
     
   elif x=="3":
-    print("trainen en valideren")
+    print("trainen en valideren /n")
   
     class MyAgent(MLAgent):
       def evaluate(self, board):
@@ -87,14 +87,14 @@ while True:
    
     random.seed(1)
    
-    my_agent = MyAgent()
+    my_agent = MyAgent(alpha=1.0, epsilon=0.1)
     random_agent = RandomAgent()
      
     train_and_plot(
         agent=my_agent,
         validation_agent=random_agent,
-        iterations=50,
-        trainings=100,
+        iterations=100,
+        trainings=500,
         validations=1000)
 
   else:
