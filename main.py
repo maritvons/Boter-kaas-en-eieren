@@ -4,7 +4,7 @@ from bke import MLAgent, EvaluationAgent, is_winner, opponent, RandomAgent, trai
 #start menu
 print("Welkom bij boter, kaas en eieren!")
 
-while True:
+def games():
   print("Kies een van de volgende menu's: \n1. een speler \n2. twee spelers \n3. trainen en valideren")
   x=input("keuze:")
   if x=="1":
@@ -20,15 +20,6 @@ while True:
     
       my_random_agent = MyRandomAgent(alpha=0.1, epsilon=1.0)
       start(player_o=my_random_agent)
-  
-      print("Wilt u opnieuw beginnen?")
-      x=input()
-      if x=="ja" or x=="Ja" or x=="JA":
-        print("\n")
-        continue 
-      if x=="nee" or x=="Nee" or x=="NEE":
-        break
-        print("Tot ziens!")
       
     elif y=="2":
       print("moeilijk")
@@ -48,29 +39,11 @@ while True:
        
       my_agent.learning = True
       start(player_o=my_agent)
-  
-      print("Wilt u opnieuw beginnen?")
-      x=input()
-      if x=="ja" or x=="Ja" or x=="JA":
-        print("\n")
-        continue 
-      if x=="nee" or x=="Nee" or x=="NEE":
-        break
-        print("Tot ziens!")
     
   elif x=="2":
     print("twee spelers")
   
     start()
-
-    print("Wilt u opnieuw beginnen?")
-    x=input()
-    if x=="ja" or x=="Ja" or x=="JA":
-      print("\n")
-      continue 
-    if x=="nee" or x=="Nee" or x=="NEE":
-      break
-      print("Tot ziens!")
     
   elif x=="3":
     print("trainen en valideren /n")
@@ -100,3 +73,15 @@ while True:
   else:
     print("Uw input is incorrect \n")
 
+
+
+
+games()
+
+print("Wilt u opnieuw beginnen?")
+y=input()
+if y=="ja" or y=="Ja" or y=="JA": 
+  print("\n")
+  games() 
+elif y=="nee" or y=="Nee" or y=="NEE":
+  print("Tot ziens!")
